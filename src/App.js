@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import "./styles.css";
+
+import Home from "./components/Home";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Admin from "./components/Admin";
+import User from "./components/User";
 
 function App() {
+  const [workshops, setWorkshops] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <nav className="navbar">
+        <div>
+          <Link to="/">WorkshopApp</Link>
+        </div>
+        <div>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Sign Up</Link>
+          <Link to="/admin">Admin</Link>
+          <Link to="/user">User</Link>
+        </div>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/admin"
+          element={<Admin workshops={workshops} setWorkshops={setWorkshops} />}
+        />
+        <Route
+          path="/user"
+          element={<User workshops={workshops} />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
