@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./styles.css";
 
+
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -24,6 +25,12 @@ function App() {
           <Link to="/user">User</Link>
         </div>
       </nav>
+
+
+
+
+
+    
 
       <Routes>
         <Route path="/" element={<Home />} />
